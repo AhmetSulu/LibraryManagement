@@ -1,0 +1,58 @@
+﻿@model FinalProjectWeek9.Models.Book
+
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create">
+    <!-- Book Title -->
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" placeholder="Enter book title" />
+        <span asp-validation-for="Title" class="text-danger font-weight-bold"></span>
+    </div>
+
+    <!-- Book Author -->
+    <div class="form-group">
+        <label asp-for="Author" class="control-label"></label>
+        <select asp-for="Author" asp-items="@(new SelectList(ViewBag.Owners,"Id","FullName"))" class="form-control" placeholder="Select book author">
+            <option selected disabled >Chosen</option>
+        </select>
+        <span asp-validation-for="Author" class="text-danger font-weight-bold"></span>
+    </div>
+
+    <!-- Book Genre -->
+    <div class="form-group">
+        <label asp-for="Genre" class="control-label"></label>
+        <input asp-for="Genre" class="form-control" placeholder="Enter book genre" />
+        <span asp-validation-for="Genre" class="text-danger font-weight-bold"></span>
+    </div>
+
+    <!-- Publish Date -->
+    <div class="form-group">
+        <label asp-for="PublishDate" class="control-label"></label>
+        <input asp-for="PublishDate" class="form-control" type="date" />
+        <span asp-validation-for="PublishDate" class="text-danger font-weight-bold"></span>
+    </div>
+
+    <!-- ISBN Number -->
+    <div class="form-group">
+        <label asp-for="ISBN" class="control-label"></label>
+        <input asp-for="ISBN" class="form-control" placeholder="Enter ISBN number" />
+        <span asp-validation-for="ISBN" class="text-danger font-weight-bold"></span>
+    </div>
+
+    <!-- Copies Available -->
+    <div class="form-group">
+        <label asp-for="CopiesAvailable" class="control-label"></label>
+        <input asp-for="CopiesAvailable" class="form-control" placeholder="Enter number of copies available" />
+        <span asp-validation-for="CopiesAvailable" class="text-danger font-weight-bold"></span>
+    </div>
+
+    <!-- Create Button -->
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>

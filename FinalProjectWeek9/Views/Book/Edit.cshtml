@@ -1,0 +1,89 @@
+﻿@model FinalProjectWeek9.Models.Book
+
+@{
+    ViewData["Title"] = "Edit Book"; // Page title
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <!-- Book Edit Form -->
+    <form asp-action="Edit">
+        <!-- Hidden field for Book ID -->
+        <input type="hidden" asp-for="Id" />
+
+        <!-- Title Field -->
+        <div class="form-group">
+            <label asp-for="Title" class="control-label">Title:</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <!-- Author Field -->
+        <div class="form-group">
+            <label asp-for="Author" class="control-label">Author:</label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+        <!-- Genre Field -->
+        <div class="form-group">
+            <label asp-for="Genre" class="control-label">Genre:</label>
+            <input asp-for="Genre" class="form-control" />
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+
+        <!-- Publish Date Field -->
+        <div class="form-group">
+            <label asp-for="PublishDate" class="control-label">Publish Date:</label>
+            <input asp-for="PublishDate" class="form-control" type="date" />
+            <span asp-validation-for="PublishDate" class="text-danger"></span>
+        </div>
+
+        <!-- ISBN Field -->
+        <div class="form-group">
+            <label asp-for="ISBN" class="control-label">ISBN:</label>
+            <input asp-for="ISBN" class="form-control" />
+            <span asp-validation-for="ISBN" class="text-danger"></span>
+        </div>
+
+        <!-- Copies Available Field -->
+        <div class="form-group">
+            <label asp-for="CopiesAvailable" class="control-label">Copies Available:</label>
+            <input asp-for="CopiesAvailable" class="form-control" />
+            <span asp-validation-for="CopiesAvailable" class="text-danger"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="@Url.Action("List", "Book")" class="btn btn-danger">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Custom styling for the edit form */
+    .form-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+</style>

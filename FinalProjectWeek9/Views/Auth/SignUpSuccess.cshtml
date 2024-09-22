@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Sign Up Success";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-success">
+    Registration was successful. Redirecting to the login page...
+</div>
+
+<script type="text/javascript">
+    // Redirect to the login page after a short delay
+    setTimeout(function () {
+        window.location.href = '@Url.Action("Login", "Auth")';
+    }, 2500);
+</script>

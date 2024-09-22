@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FinalProjectWeek9.Models.Book>
+
+@{
+    ViewData["Title"] = "Books List";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<!-- TempData Success Message -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="container mt-4">
+    <!-- Add New Book Button -->
+    <div class="mb-4 text-center">
+        <a href="@Url.Action("Create", "Book")" class="btn btn-custom btn-lg">Add New Book</a>
+    </div>
+
+    <!-- Books Table -->
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <!-- Table Headers -->
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Publish Date</th>
+                <th>ISBN</th>
+                <th>Copies Available</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- List Books -->
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <!-- Book Information -->
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Genre</td>
+                    <td>@book.PublishDate.ToShortDateString()</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.CopiesAvailable</td>
+                    <td>
+                        <!-- Action Buttons -->
+                        <a class="btn btn-info btn-sm" href="@Url.Action("Details", "Book", new { id = book.Id })">Details</a>
+                        <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", "Book", new { id = book.Id })">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "Book", new { id = book.Id })">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Custom Button Style */
+    .btn-custom {
+        background-color: #007bff;
+        color: #ffffff;
+        border-radius: 0.25rem; /* Button Corner Radius */
+    }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+        }
+
+    /* Table Header Style */
+    .table thead th {
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Table Row Style */
+    .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Table Row Hover Effect */
+    .table tbody tr:hover {
+        background-color: #e9ecef; /* Hover Effect */
+    }
+</style>
+

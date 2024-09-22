@@ -1,0 +1,35 @@
+﻿@model FinalProjectWeek9.ViewModels.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Create Author";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Author Creation Form -->
+<form asp-action="Create" method="post">
+
+    <!-- First Name Field -->
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <!-- Last Name Field -->
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <!-- Date of Birth Field -->
+    <div class="form-group">
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" class="form-control" type="date" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <!-- Create Button -->
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

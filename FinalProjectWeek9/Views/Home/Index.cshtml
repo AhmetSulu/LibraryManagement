@@ -1,0 +1,40 @@
+﻿@model FinalProjectWeek9.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Library Management System";
+}
+
+<div class="container mt-4">
+    <!-- Page Title -->
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <!-- Display success message if available -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <!-- Welcome message -->
+    <p>Welcome to our library! Explore our collection of books, learn more about our authors, and manage your membership through the links below.</p>
+
+    <!-- Quick links or promotional content -->
+    <div class="row mt-4">
+        <!-- Books Section -->
+        <div class="col-md-4 mb-3">
+            <h3>Books</h3>
+            <p>Discover all the books in our library. <a href="@Url.Action("List", "Book")">View Books</a></p>
+        </div>
+        <!-- Authors Section -->
+        <div class="col-md-4 mb-3">
+            <h3>Authors</h3>
+            <p>Learn more about the authors in our library. <a href="@Url.Action("List", "Author")">View Authors</a></p>
+        </div>
+        <!-- User Management Section -->
+        <div class="col-md-4 mb-3">
+            <h3>Membership</h3>
+            <p>Sign up for a new account or log in to your existing account. <a href="@Url.Action("SignUp", "Auth")">Sign Up</a> | <a href="@Url.Action("Login", "Auth")">Log In</a></p>
+        </div>
+    </div>
+</div>

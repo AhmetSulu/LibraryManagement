@@ -1,0 +1,67 @@
+﻿@model FinalProjectWeek9.ViewModels.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Delete Author";
+}
+
+<div class="container mt-4">
+    <h2 class="text-danger">@ViewData["Title"]</h2>
+
+    <!-- Warning message for delete confirmation -->
+    <div class="alert alert-warning">
+        <h3>Are you sure you want to delete this author?</h3>
+    </div>
+
+    <!-- Author details card -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <!-- Author details -->
+            <p><strong>First Name:</strong> @Model.FirstName</p>
+            <p><strong>Last Name:</strong> @Model.LastName</p>
+            <p><strong>Date of Birth:</strong> @Model.DateOfBirth.ToShortDateString()</p>
+        </div>
+    </div>
+
+    <!-- Delete confirmation form -->
+    <form asp-action="DeleteConfirmed" method="post">
+        <!-- Hidden field to pass Author ID -->
+        <input type="hidden" asp-for="Id" />
+
+        <!-- Action buttons for deletion and cancellation -->
+        <div class="form-group">
+            <!-- Delete button -->
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <!-- Cancel button -->
+            <a href="@Url.Action("List", "Author")" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Custom styling for delete confirmation */
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    /* Make the heading more prominent */
+    h2.text-danger {
+        font-weight: bold;
+    }
+
+    /* Style the card's body text */
+    .card-body p {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* Adjust the spacing for the buttons */
+    .btn-group .btn {
+        margin-right: 0.5rem;
+    }
+</style>

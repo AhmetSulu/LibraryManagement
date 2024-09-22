@@ -1,0 +1,88 @@
+﻿@model FinalProjectWeek9.Models.Book
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<div class="container mt-4">
+    <h2 class="text-danger">@ViewData["Title"]</h2>
+
+    <!-- Warning message for delete confirmation -->
+    <div class="alert alert-warning">
+        <h3>Are you sure you want to delete this Book?</h3>
+    </div>
+
+    <!-- Book details card -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <!-- Book title -->
+            <h4 class="card-title">@Model.Title</h4>
+            <dl class="row">
+                <!-- Author information -->
+                <dt class="col-sm-3">Author:</dt>
+                <dd class="col-sm-9">@Model.Author</dd>
+
+                <!-- Genre information -->
+                <dt class="col-sm-3">Genre:</dt>
+                <dd class="col-sm-9">@Model.Genre</dd>
+
+                <!-- Publish Date information -->
+                <dt class="col-sm-3">Publish Date:</dt>
+                <dd class="col-sm-9">@Model.PublishDate.ToShortDateString()</dd>
+
+                <!-- ISBN information -->
+                <dt class="col-sm-3">ISBN:</dt>
+                <dd class="col-sm-9">@Model.ISBN</dd>
+
+                <!-- Copies Available information -->
+                <dt class="col-sm-3">Copies Available:</dt>
+                <dd class="col-sm-9">@Model.CopiesAvailable</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Delete confirmation form -->
+    <form asp-action="DeleteConfirmed" method="post">
+        <!-- Hidden field to pass Book ID -->
+        <input type="hidden" asp-for="Id" />
+
+        <!-- Action buttons for deletion and cancellation -->
+        <div class="form-group">
+            <!-- Delete button -->
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <!-- Cancel button -->
+            <a href="@Url.Action("List", "Book")" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Custom styling for delete confirmation */
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    /* Make the heading more prominent */
+    h2.text-danger {
+        font-weight: bold;
+    }
+
+    /* Style the card's title */
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Adjust the spacing for the definition list (details section) */
+    dl.row dt {
+        font-weight: bold;
+        color: #555;
+    }
+</style>

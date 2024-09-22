@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Login Success";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-success">
+    Login successful. Redirecting to the home page...
+</div>
+
+<script type="text/javascript">
+    // Redirect to the home page after a short delay
+    setTimeout(function () {
+        window.location.href = '@Url.Action("Index", "Home")';
+    }, 2500);
+</script>

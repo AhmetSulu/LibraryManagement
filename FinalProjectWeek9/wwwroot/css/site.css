@@ -1,0 +1,138 @@
+﻿/* Genel stil ayarları */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #2c3e50; /* Navbar arka plan rengi */
+    border-bottom: 1px solid #34495e; /* Navbar alt sınır rengi */
+}
+
+.navbar {
+    padding: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: #bdc3c7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+.search-form input[type="search"] {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #ecf0f1;
+}
+
+.container {
+    max-width: 1280px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    flex: 1;
+}
+
+/* Footer stil ayarları */
+.footer {
+    background-color: rgba(52, 58, 64, 0.8); /* Arka plan rengini şeffaf yapma */
+    color: #ffffff;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.footer .heart {
+    color: red;
+}
+
+/* Diğer stiller */
+.btn-modern {
+    background-color: transparent;
+    border: 1px solid #3498db;
+    color: #3498db;
+    padding: 8px 20px;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.btn-modern:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.alert-success {
+    background: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #f9f9f9;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background: #ffffff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .search-form input[type="search"] {
+        width: 100%;
+        max-width: 100%;
+    }
+}

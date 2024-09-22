@@ -1,0 +1,22 @@
+﻿@model FinalProjectWeek9.ViewModels.ServicesViewModel
+
+@{
+    ViewData["Title"] = "Our Services";
+}
+
+<div class="container mt-4">
+    <!-- Page Title -->
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <!-- Introduction Paragraph -->
+    <p>Learn more about the services we offer:</p>
+
+    <!-- List of Services -->
+    <ul>
+        @foreach (var service in Model.Services)
+        {
+            <!-- Display each service -->
+            <li>@service</li>
+        }
+    </ul>
+</div>

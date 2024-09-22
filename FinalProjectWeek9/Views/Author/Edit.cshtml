@@ -1,0 +1,68 @@
+﻿@model FinalProjectWeek9.ViewModels.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Edit Author";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <!-- Author Edit Form -->
+    <form asp-action="Edit" method="post">
+        <!-- Hidden Field for Author Id -->
+        <input type="hidden" asp-for="Id" />
+
+        <!-- First Name Field -->
+        <div class="form-group">
+            <label asp-for="FirstName" class="form-label">First Name:</label>
+            <input asp-for="FirstName" class="form-control" placeholder="Enter First Name" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <!-- Last Name Field -->
+        <div class="form-group">
+            <label asp-for="LastName" class="form-label">Last Name:</label>
+            <input asp-for="LastName" class="form-control" placeholder="Enter Last Name" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <!-- Date of Birth Field -->
+        <div class="form-group">
+            <label asp-for="DateOfBirth" class="form-label">Date of Birth:</label>
+            <input asp-for="DateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+
+        <!-- Save and Cancel Buttons -->
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="@Url.Action("List", "Author")" class="btn btn-danger">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Custom styling for the edit form */
+    .form-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+</style>

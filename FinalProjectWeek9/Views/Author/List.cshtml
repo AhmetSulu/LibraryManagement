@@ -1,0 +1,84 @@
+﻿@model IEnumerable<FinalProjectWeek9.ViewModels.AuthorViewModel>
+@{
+    ViewData["Title"] = "Authors List";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<!-- TempData Messages -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="container mt-4">
+    <!-- Button to Add New Author -->
+    <div class="mb-4 text-center">
+        <a href="@Url.Action("Create", "Author")" class="btn btn-custom btn-lg">Add Author</a>
+    </div>
+
+    <!-- Authors Table -->
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <!-- Table Headers -->
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Listing Authors -->
+            @foreach (var author in Model)
+            {
+                <tr>
+                    <!-- Author Information -->
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                    <td>@author.DateOfBirth.ToShortDateString()</td>
+                    <td>
+                        <!-- Action Buttons for Each Author -->
+                        <a href="@Url.Action("Details", "Author", new { id = author.Id })" class="btn btn-info btn-sm">Details</a>
+                        <a href="@Url.Action("Edit", "Author", new { id = author.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Author", new { id = author.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Custom Button Style */
+    .btn-custom {
+        background-color: #007bff;
+        color: #ffffff;
+        border-radius: 0.25rem; /* Button Corner Radius */
+    }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+        }
+
+    /* Table Header Style */
+    .table thead th {
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Table Row Style */
+    .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Table Row Hover Effect */
+    .table tbody tr:hover {
+        background-color: #e9ecef; /* Hover Effect */
+    }
+</style>

@@ -1,0 +1,56 @@
+﻿@* Views/Shared/_Header.cshtml *@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Library</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("List", "Book")">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("List", "Author")">Authors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                </li>
+            </ul>
+
+            @* Search form *@
+            <form class="form-inline my-2 my-lg-0" method="get" action="@Url.Action("Search", "Home")">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <ul class="navbar-nav ml-auto">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @* Display welcome message and logout button if user is authenticated *@
+                    <li class="nav-item">
+                        <span class="navbar-text text-white mr-3">Welcome, @User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Email)?.Value</span>
+                    </li>
+                    <li class="nav-item">
+                        <form asp-controller="Auth" asp-action="Logout" method="post" class="form-inline">
+                            <button type="submit" class="btn btn-outline-light nav-link" style="cursor:pointer;">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    @* Display Sign Up and Login buttons if user is not authenticated *@
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="@Url.Action("SignUp", "Auth")">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="@Url.Action("Login", "Auth")">Login</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container mt-4" id="contact-form">
+    <!-- Page Title -->
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <!-- Introduction Paragraph -->
+    <p>If you have any questions or feedback, please fill out the form below and we will get back to you as soon as possible.</p>
+
+    <!-- Contact Form -->
+    <form method="post">
+        <!-- Name Input -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="Name" value="@Model.Name" required />
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="Email" value="@Model.Email" required />
+        </div>
+
+        <!-- Message Input -->
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" name="Message" rows="4" required>@Model.Message</textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>

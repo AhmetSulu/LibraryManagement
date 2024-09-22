@@ -1,0 +1,42 @@
+﻿@model FinalProjectWeek9.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Display Messages -->
+@if (TempData["LoginError"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["LoginError"]
+    </div>
+    TempData["LoginError"] = null;  // Clear TempData after displaying the message
+}
+
+<!-- Login Form -->
+<form asp-action="Login" method="post">
+    <!-- Email Field -->
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<!-- Clear SignUpSuccess TempData -->
+@if (TempData["SignUpSuccess"] != null)
+{
+    TempData["SignUpSuccess"] = null;  // Clear TempData if it exists
+}
